@@ -353,6 +353,19 @@ export function syncDirs(srcDir: string, destDir: string, removeStale: boolean, 
 }
 
 /**
+ * Checks if type of schema is object.
+ */
+export function schemaOfObjectType(schemaOrRef: SchemaOrRef | undefined, openApi: OpenAPIObject) {
+  if (!schemaOrRef) {
+    return false;
+  }
+  const schema = schemaOrRef.$ref
+    ? resolveRef(openApi, schemaOrRef.$ref)
+    : schemaOrRef as SchemaObject;
+  return schema.type === 'object' || Boolean(schema.properties);
+}
+
+/**
  * Tries to get a discriminator info from a base schema and for a derived one.
  */
 function tryGetDiscriminator(baseSchemaOrRef: SchemaObject | ReferenceObject, derivedSchema: SchemaObject, openApi: OpenAPIObject) {
