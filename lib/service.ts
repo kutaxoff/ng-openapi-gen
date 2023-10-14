@@ -16,7 +16,7 @@ export class Service extends GenType {
     if (this.fileName.endsWith('-service')) {
       this.fileName = this.fileName.substring(0, this.fileName.length - '-service'.length) + '.service';
     }
-    this.tsComments = tsComments(tag.description || '', 0);
+    this.tsComments = tsComments(tag.description || '', 0, undefined, options.indent4 ? 4 : 2);
 
     // Collect the imports
     for (const operation of operations) {

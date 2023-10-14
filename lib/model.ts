@@ -34,7 +34,7 @@ export class Model extends GenType {
     super(name, unqualifiedName, options);
 
     const description = schema.description || '';
-    this.tsComments = tsComments(description, 0, schema.deprecated);
+    this.tsComments = tsComments(description, 0, schema.deprecated, options.indent4 ? 4 : 2);
 
     const type = schema.type || 'any';
 

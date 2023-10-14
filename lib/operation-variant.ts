@@ -39,8 +39,8 @@ export class OperationVariant {
     this.isNumber = this.resultType === 'number';
     this.isBoolean = this.resultType === 'boolean';
     this.isOther = !this.isVoid && !this.isNumber && !this.isBoolean;
-    this.responseMethodTsComments = tsComments(this.responseMethodDescription(), 1, operation.deprecated);
-    this.bodyMethodTsComments = tsComments(this.bodyMethodDescription(), 1, operation.deprecated);
+    this.responseMethodTsComments = tsComments(this.responseMethodDescription(), 1, operation.deprecated, options.indent4 ? 4 : 2);
+    this.bodyMethodTsComments = tsComments(this.bodyMethodDescription(), 1, operation.deprecated, options.indent4 ? 4 : 2);
   }
 
   private inferResponseType(successResponse: Content, operation: Operation, { customizedResponseType = {} }: Pick<Options, 'customizedResponseType'>): string {

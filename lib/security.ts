@@ -30,7 +30,7 @@ export class Security {
   constructor(key: string, public spec: SecuritySchemeObject, public scope: string[] = [], options: Options, openApi: OpenAPIObject) {
     this.name = spec.name || '';
     this.var = methodName(key);
-    this.tsComments = tsComments(spec.description || '', 2);
+    this.tsComments = tsComments(spec.description || '', 2, undefined, options.indent4 ? 4 : 2);
     this.in = spec.in || 'header';
     this.type = tsType(spec.schema, options, openApi);
   }

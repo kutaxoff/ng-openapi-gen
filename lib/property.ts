@@ -28,6 +28,6 @@ export class Property {
     this.identifier = escapeId(this.name);
     this.readOnly = (options.readonlyProperties && (schema as SchemaObject).readOnly) || false;
     const description = (schema as SchemaObject).description || '';
-    this.tsComments = tsComments(description, 1, (schema as SchemaObject).deprecated);
+    this.tsComments = tsComments(description, 1, (schema as SchemaObject).deprecated, options.indent4 ? 4 : 2);
   }
 }
