@@ -9,6 +9,7 @@ import { {{baseServiceClass}} } from '../{{baseServiceFile}}';
 import { {{configurationClass}} } from '../{{configurationFile}}';
 import { {{responseClass}} } from '../{{responseFile}}';
 import { {{requestBuilderClass}} } from '../{{requestBuilderFile}}';
+{{#if utilsFile}}import * as Utils from '../{{{utilsFile}}}'; {{/if}}
 
 {{#imports}}import { {{{typeName}}}{{#useAlias}} as {{{qualifiedName}}}{{/useAlias}} } from '{{{file}}}';
 {{/imports}}

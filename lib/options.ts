@@ -107,6 +107,9 @@ export interface Options {
   /** When specified, will create temporary files in system temporary folder instead of next to output folder. */
   useTempDir?: boolean;
 
+  /** When true, readonly properties will be marked as optional for POST and PUT methods */
+  readonlyProperties?: boolean;
+
   /** When true, no verbose output will be displayed */
   silent?: boolean;
 

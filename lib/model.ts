@@ -27,6 +27,9 @@ export class Model extends GenType {
   properties: Property[];
   additionalPropertiesType: string;
 
+  // AdditionalProperties
+  readOnly: boolean;
+
   constructor(public openApi: OpenAPIObject, name: string, public schema: SchemaObject, options: Options) {
     super(name, unqualifiedName, options);
 
@@ -52,6 +55,7 @@ export class Model extends GenType {
     this.isObject = (type === 'object' || !!schema.properties) && !schema.nullable && !hasAllOf && !hasOneOf;
     this.isEnum = (this.enumValues || []).length > 0;
     this.isSimple = !this.isObject && !this.isEnum;
+    this.readOnly = (this.options.readonlyProperties && schema.readOnly) || false;
 
     if (this.isObject) {
       // Object
@@ -90,6 +94,7 @@ export class Model extends GenType {
       // An object definition
       const properties = schema.properties || {};
       const required = schema.required || [];
+      const readOnly = schema.readOnly || false;
       const propNames = Object.keys(properties);
       // When there are additional properties, we need an union of all types for it.
       // See https://github.com/cyclosproject/ng-openapi-gen/issues/68
@@ -117,6 +122,7 @@ export class Model extends GenType {
         appendType(propType);
         this.additionalPropertiesType = [...propTypes].sort().join(' | ');
       }
+      this.readOnly = (this.options.readonlyProperties && readOnly) || false;
     }
     if (schema.allOf) {
       schema.allOf.forEach(s => this.collectObject(s, propertiesByName));

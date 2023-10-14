@@ -198,6 +198,11 @@
       "default": false,
       "type": "boolean"
     },
+    "readonlyProperties": {
+      "description": "When true, readonly properties will be marked as optional for POST and PUT methods",
+      "default": false,
+      "type": "boolean"
+    },
     "silent": {
       "description": "When set to true, no verbose output will be displayed.",
       "default": "false",
