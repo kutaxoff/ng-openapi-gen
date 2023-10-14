@@ -118,8 +118,8 @@ export function toBasicChars(text: string, firstNonDigit = false): string {
 /**
  * Returns the TypeScript comments for the given schema description, in a given indentation level
  */
-export function tsComments(description: string | undefined, level: number, deprecated?: boolean) {
-  const indent = '  '.repeat(level);
+export function tsComments(description: string | undefined, level: number, deprecated?: boolean, indentWidth: 2 | 4 = 2) {
+  const indent = (' ').repeat(level * indentWidth);
   if (description === undefined || description.length === 0) {
     return indent + (deprecated ? '/** @deprecated */' : '');
   }
