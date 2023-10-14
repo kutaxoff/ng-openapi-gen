@@ -139,7 +139,8 @@ export class NgOpenApiGen {
 
   private readTemplates() {
     const hasLib = __dirname.endsWith(path.sep + 'lib');
-    const builtInDir = path.join(__dirname, hasLib ? '../templates' : 'templates');
+    const builtInDirName = this.options.indent4 ? 'templates/indent-4' : 'templates';
+    const builtInDir = path.join(__dirname, hasLib ? `../${builtInDirName}` : builtInDirName);
     const customDir = this.options.templates || '';
     this.globals = new Globals(this.options);
     this.globals.rootUrl = this.readRootUrl();

@@ -109,4 +109,7 @@ export interface Options {
 
   /** When true, no verbose output will be displayed */
   silent?: boolean;
+
+  /** Use 4 spaces indentation in generated files */
+  indent4?: boolean;
 }

@@ -202,6 +202,11 @@
       "description": "When set to true, no verbose output will be displayed.",
       "default": "false",
       "type": "boolean"
+    },
+    "indent4": {
+      "description": "When set to true, templates with 4 spaces as indents will be used.\nDoes not affect custom templates.",
+      "default": false,
+      "type": "boolean"
     }
   }
 }
