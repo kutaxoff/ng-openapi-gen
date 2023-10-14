@@ -112,6 +112,9 @@ export class NgOpenApiGen {
       if (this.options.indexFile) {
         this.write('index', { ...general, modelImports }, 'index');
       }
+      if (this.globals.utilsFile) {
+        this.write('utils', general, this.globals.utilsFile);
+      }
 
       // Now synchronize the temp to the output folder
       syncDirs(this.tempDir, this.outDir, this.options.removeStaleFiles !== false, this.logger);

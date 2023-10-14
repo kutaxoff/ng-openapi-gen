@@ -15,11 +15,13 @@ export class Globals {
   requestBuilderFile: string;
   responseClass: string;
   responseFile: string;
+  utilsFile?: string;
   moduleClass?: string;
   moduleFile?: string;
   modelIndexFile?: string;
   serviceIndexFile?: string;
   rootUrl?: string;
+  readonlyProperties?: boolean;
 
   constructor(options: Options) {
     this.configurationClass = options.configuration || 'ApiConfiguration';
@@ -31,6 +33,7 @@ export class Globals {
     this.requestBuilderFile = fileName(this.requestBuilderClass);
     this.responseClass = options.response || 'StrictHttpResponse';
     this.responseFile = fileName(this.responseClass);
+    this.readonlyProperties = options.readonlyProperties || false;
     if (options.module !== false && options.module !== '') {
       this.moduleClass = options.module === true || options.module === undefined ? 'ApiModule' : options.module;
       // Angular's best practices demands xxx.module.ts, not xxx-module.ts
@@ -41,6 +44,9 @@ export class Globals {
     }
     if (options.modelIndex !== false && options.modelIndex !== '') {
       this.modelIndexFile = options.modelIndex === true || options.modelIndex === undefined ? 'models' : options.modelIndex;
+    }
+    if (this.readonlyProperties) {
+      this.utilsFile = 'utils';
     }
   }
 

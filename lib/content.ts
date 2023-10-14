@@ -12,7 +12,12 @@ export class Content {
     public mediaType: string,
     public spec: MediaTypeObject,
     public options: Options,
-    public openApi: OpenAPIObject) {
+    public openApi: OpenAPIObject,
+    method?: string) {
+    const readOnly = (method && ['post', 'put'].includes(method) && options.readonlyProperties) || false;
     this.type = tsType(spec.schema, options, openApi);
+    if (readOnly) {
+      this.type = `Utils.Writable<${this.type}>`;
+    }
   }
 }
