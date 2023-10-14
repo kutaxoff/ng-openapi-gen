@@ -1,6 +1,6 @@
 {
   "name": "@erengee/ng-openapi-gen",
-  "version": "0.25.2",
+  "version": "0.25.3",
   "license": "MIT",
   "author": "Cyclos development team & Valentin Katyshev <kutaxoff@icloud.com>",
   "description": "An OpenAPI 3 codegen for Angular 12+",
